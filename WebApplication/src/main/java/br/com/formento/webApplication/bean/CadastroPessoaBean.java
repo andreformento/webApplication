@@ -3,12 +3,11 @@ package br.com.formento.webApplication.bean;
 import java.io.Serializable;
 
 import javax.enterprise.context.RequestScoped;
-import javax.inject.Inject;
 import javax.inject.Named;
 
 @Named
 @RequestScoped
-public class CadastroPessoaBean  implements Serializable{
+public class CadastroPessoaBean implements Serializable {
 
 	/**
 	 * 

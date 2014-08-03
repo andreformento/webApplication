@@ -12,38 +12,38 @@ import javax.inject.Named;
 
 @Named
 @SessionScoped
-public class UserData implements Serializable {
+public class LanguageBean implements Serializable {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -6037666802252831437L;
+	private static final long serialVersionUID = 7900302688122643039L;
 
 	private static Map<String, Object> countries;
-
 	static {
 		countries = new LinkedHashMap<String, Object>();
-		countries.put("English", Locale.ENGLISH);
-		countries.put("French", Locale.FRENCH);
+		countries.put("English", Locale.ENGLISH); // label, value
+		countries.put("Portuguese", new Locale("pt", "BR"));
 	}
 
-	private String locale;
+	private String localeCode;
 
-	public Map<String, Object> getCountries() {
+	public Map<String, Object> getCountriesInMap() {
 		return countries;
 	}
 
-	public String getLocale() {
-		return locale;
+	public String getLocaleCode() {
+		return localeCode;
 	}
 
-	public void setLocale(String locale) {
-		this.locale = locale;
+	public void setLocaleCode(String localeCode) {
+		this.localeCode = localeCode;
 	}
 
 	// value change event listener
-	public void localeChanged(ValueChangeEvent e) {
+	public void countryLocaleCodeChanged(ValueChangeEvent e) {
 		String newLocaleValue = e.getNewValue().toString();
+		// loop country map to compare the locale code
 		for (Map.Entry<String, Object> entry : countries.entrySet()) {
 			if (entry.getValue().toString().equals(newLocaleValue)) {
 				FacesContext.getCurrentInstance().getViewRoot()
@@ -51,4 +51,5 @@ public class UserData implements Serializable {
 			}
 		}
 	}
+
 }
