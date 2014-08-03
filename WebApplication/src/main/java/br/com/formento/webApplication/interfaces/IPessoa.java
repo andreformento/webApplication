@@ -1,4 +1,4 @@
-package br.com.formento.webserviceServer.interfaces;
+package br.com.formento.webApplication.interfaces;
 
 import java.io.Serializable;
 

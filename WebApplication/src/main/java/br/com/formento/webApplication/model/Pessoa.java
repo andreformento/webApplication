@@ -1,6 +1,6 @@
-package br.com.formento.webserviceServer.model;
+package br.com.formento.webApplication.model;
 
-import br.com.formento.webserviceServer.interfaces.IPessoa;
+import br.com.formento.webApplication.interfaces.IPessoa;
 
 public abstract class Pessoa implements IPessoa {
 

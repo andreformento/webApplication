@@ -1,4 +1,4 @@
-package br.com.formento.webserviceServer.model;
+package br.com.formento.webApplication.model;
 
 public class PessoaFisica extends Pessoa {
 
