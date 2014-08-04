@@ -1,7 +1,9 @@
 package br.com.formento.webApplication.bean;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
@@ -19,17 +21,26 @@ public class LanguageBean implements Serializable {
 	 */
 	private static final long serialVersionUID = 7900302688122643039L;
 
-	private static Map<String, Object> countries;
-	static {
-		countries = new LinkedHashMap<String, Object>();
-		countries.put("English", Locale.ENGLISH); // label, value
-		countries.put("Portuguese", new Locale("pt", "BR"));
+	private static Map<String, Locale> countriesInMap;
+
+	public static Map<String, Locale> getCountriesInMap() {
+		if (countriesInMap == null) {
+			countriesInMap = new LinkedHashMap<String, Locale>();
+			countriesInMap.put("English", Locale.ENGLISH); // label, value
+			Locale portuguese = new Locale("pt", "BR");
+			countriesInMap.put(portuguese.getCountry(), portuguese);
+		}
+		return countriesInMap;
 	}
 
 	private String localeCode;
 
-	public Map<String, Object> getCountriesInMap() {
-		return countries;
+	public LanguageBean() {
+	}
+
+	public List<Locale> getLocales() {
+		List<Locale> arrayList = new ArrayList<Locale>(getCountriesInMap().values());
+		return arrayList;
 	}
 
 	public String getLocaleCode() {
@@ -44,10 +55,9 @@ public class LanguageBean implements Serializable {
 	public void countryLocaleCodeChanged(ValueChangeEvent e) {
 		String newLocaleValue = e.getNewValue().toString();
 		// loop country map to compare the locale code
-		for (Map.Entry<String, Object> entry : countries.entrySet()) {
+		for (Map.Entry<String, Locale> entry : getCountriesInMap().entrySet()) {
 			if (entry.getValue().toString().equals(newLocaleValue)) {
-				FacesContext.getCurrentInstance().getViewRoot()
-						.setLocale((Locale) entry.getValue());
+				FacesContext.getCurrentInstance().getViewRoot().setLocale((Locale) entry.getValue());
 			}
 		}
 	}

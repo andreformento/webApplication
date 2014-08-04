@@ -11,19 +11,49 @@
 </h:head>
 
 <h:body>
+3
 	<h:form>
+		<p:menubar rendered="false">
+			<p:menuitem value="Login"/>
+			
+			<p:submenu label="Cadastro">
+				<p:menuitem value="Produtos"/>
+				<p:menuitem value="Notas fiscais"/>
+				<p:menuitem value="Lista de notas fiscais"/>
+				<p:menuitem value="Usuários"/>
+			</p:submenu>
+			
+			<p:menuitem value="Logoff"/>
+		</p:menubar>		
+	
 		<h3>
 			<h:outputText value="#{msg['welcome']}" />
 		</h3>
-aa
-		<h:outputText value="Language:" /> 
-		<h:selectOneMenu 
-				value="#{languageBean.localeCode}"
-				onchange="submit()"
-				valueChangeListener="#{languageBean.countryLocaleCodeChanged}">
-			<f:selectItems value="#{languageBean.countriesInMap}" />
-		</h:selectOneMenu>
-
+		
+		<h:panelGrid>
+			<p:outputLabel value="Language:" for="lng" />
+	        <p:selectOneMenu 
+	        		id="lng" 
+	        		value="#{languageBean.localeCode}" 
+	        		converter="localeConverter" 
+	        		var="l" 
+	        		>
+	        		
+	            <f:selectItems 
+	            		value="#{languageBean.locales}" 
+	            		var="locale" 
+	            		itemValue="#{locale}" 
+	            		itemLabel="#{locale.language}"
+	            		/>
+	            		
+	            <p:column>
+	                <h:outputText value="#{l.language}"/>
+	            </p:column>
+	            <p:column>
+	                <h:outputText value="#{l.country}" />
+	            </p:column>
+	        </p:selectOneMenu>
+        </h:panelGrid>
 	</h:form>
 
 	<div id="rodape">Copyright 2014. Todos os direitos reservados a
