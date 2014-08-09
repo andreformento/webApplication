@@ -12,25 +12,11 @@
 
 <h:body>
 	<h:form>
-		<p:menubar rendered="false">
-			<p:menuitem value="Login"/>
-			
-			<p:submenu label="Cadastro">
-				<p:menuitem value="Produtos"/>
-				<p:menuitem value="Notas fiscais"/>
-				<p:menuitem value="Lista de notas fiscais"/>
-				<p:menuitem value="Usuários"/>
-			</p:submenu>
-			
-			<p:menuitem value="Logoff"/>
-		</p:menubar>		
-	
 		<h3>
 			<h:outputText value="#{msg['login.bem_vindo']}" />
 		</h3>
 		
 		<h:panelGrid>
-			<p:outputLabel value="#{msg['login.idioma']}" for="lng" />
 	        <p:selectOneMenu 
 	        		id="lng" 
 	        		value="#{languageBean.locale}" 
@@ -57,6 +43,18 @@
 	            </p:column>
 	        </p:selectOneMenu>
         </h:panelGrid>
+        
+		<p:menubar>
+			<p:menuitem value="#{msg['menu.entrar']}"/>
+			
+			<p:submenu label="#{msg['menu.cadastro']}">
+				<p:menuitem value="#{msg['menu.cadastro.produto']}"/>
+				<p:menuitem value="#{msg['menu.cadastro.nota_fiscal']}"/>
+				<p:menuitem value="#{msg['menu.cadastro.usuario']}"/>
+			</p:submenu>
+			
+			<p:menuitem value="#{msg['menu.sair']}"/>
+		</p:menubar>		
 	</h:form>
 
 	<div id="rodape">Copyright 2014. Todos os direitos reservados a
