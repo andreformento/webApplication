@@ -2,15 +2,13 @@
   <persistence-unit name="notas" transaction-type="RESOURCE_LOCAL">
     <provider>org.hibernate.ejb.HibernatePersistence</provider>
     
-    <class>br.com.caelum.notasfiscais.modelo.Item</class>
-    <class>br.com.caelum.notasfiscais.modelo.NotaFiscal</class>
-    <class>br.com.caelum.notasfiscais.modelo.Produto</class>
-    <class>br.com.caelum.notasfiscais.modelo.Usuario</class>
+    <!-- <class>br.com.formento.webApplication.model.PessoaFisica</class> -->
     
     <properties>
       <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
       
-      <!-- <property name="javax.persistence.jdbc.url" value="postgresql://localhost:5432/notasfiscais"/> -->
+      <!-- 
+      <property name="javax.persistence.jdbc.url" value="postgresql://localhost:5432/notasfiscais"/> -->
       <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/notasfiscais"/>
       
       <property name="javax.persistence.jdbc.user" value="gdai"/>
