@@ -19,28 +19,27 @@
 		<h:panelGrid>
 	        <p:selectOneMenu 
 	        		id="lng" 
-	        		value="#{languageBean.idioma}" 
-	        		converter="idiomaConverter" 
-	        		var="i" 
+	        		value="#{languageBean.locale}" 
+	        		converter="localeConverter"
+	        		var="l" 
 	        		>
 	        		
 	            <f:selectItems 
-	            		id="siIdiomas"
-	            		value="#{languageBean.listIdioma}" 
-	            		var="idioma" 
-	            		itemValue="#{idioma}" 
-	            		itemLabel="#{idioma.descricao}"
+	            		value="#{languageBean.listLocale}" 
+	            		var="locale" 
+	            		itemValue="#{locale}" 
+	            		itemLabel="#{locale.displayName}"
 	            		/>
 	            <p:ajax update="@form" />
 	            	
 	            <p:column>
-	            	<h:graphicImage library="imagens/flags" name="#{i.locale}.jpg"  width="40" height="30" />
+	            	<h:graphicImage library="imagens/flags" name="#{i.language}.jpg"  width="40" height="30" />
 	            </p:column>	
 	            <p:column headerText="#{msg['idioma.lingua']}">
-	                <h:outputText value="#{i.descricao}" />
+	                <h:outputText value="#{i.displayLanguage}" />
 	            </p:column>
 	            <p:column headerText="#{msg['idioma.pais']}">
-	                <h:outputText value="#{i.pais}"/>
+	                <h:outputText value="#{i.displayCountry}"/>
 	            </p:column>
 	        </p:selectOneMenu>
         </h:panelGrid>

@@ -9,8 +9,6 @@ import javax.enterprise.context.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 
-import br.com.formento.webApplication.model.Idioma;
-
 @Named
 @SessionScoped
 public class LanguageBean implements Serializable {
@@ -20,31 +18,28 @@ public class LanguageBean implements Serializable {
 	 */
 	private static final long serialVersionUID = 7900302688122643039L;
 
-	private static List<Idioma> listIdioma;
+	private static List<Locale> listLocale;
 
 	static {
-		listIdioma = new ArrayList<>();
-		listIdioma.add(new Idioma(new Locale("pt", "BR")));
-		listIdioma.add(new Idioma(Locale.ENGLISH));
+		listLocale = new ArrayList<>();
+		listLocale.add(new Locale("pt", "BR"));
+		listLocale.add(Locale.ENGLISH);
 	}
-
-	private Idioma idioma;
-
-	public List<Idioma> getListIdioma() {
-		return listIdioma;
-	}
-
+	
 	public LanguageBean() {
-		idioma = new Idioma(FacesContext.getCurrentInstance().getViewRoot().getLocale());
+		System.out.println("iniciou "+getLocale());
 	}
 
-	public Idioma getIdioma() {
-		return idioma;
+	public Locale getLocale() {
+		return FacesContext.getCurrentInstance().getViewRoot().getLocale();
 	}
 
-	public void setIdioma(Idioma idioma) {
-		this.idioma = new Idioma(idioma.getLocale());
-		FacesContext.getCurrentInstance().getViewRoot().setLocale(this.idioma.getLocale());
+	public void setLocale(Locale locale) {
+		FacesContext.getCurrentInstance().getViewRoot().setLocale(locale);
+	}
+
+	public List<Locale> getListLocale() {
+		return listLocale;
 	}
 
 }

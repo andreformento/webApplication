@@ -3,7 +3,7 @@ package br.com.formento.webApplication.model;
 import java.io.Serializable;
 import java.util.Locale;
 
-public class Idioma implements Serializable {
+public class CopyOfIdioma implements Serializable {
 
 	/**
 	 * 
@@ -17,7 +17,7 @@ public class Idioma implements Serializable {
 	private transient String descricao;
 	private transient String identificador;
 
-	public Idioma(Locale locale) {
+	public CopyOfIdioma(Locale locale) {
 		this.locale = locale;
 	}
 
