@@ -1,0 +1,4 @@
+<project name="webApplication">
+	<javac srcdir="src/main/java" destdir="bin/main/java">
+	</javac>
+</project>
