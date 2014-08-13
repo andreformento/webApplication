@@ -8,7 +8,6 @@ import javax.inject.Named;
 @Named
 @RequestScoped
 public class CadastroPessoaBean implements Serializable {
-
 	/**
 	 * 
 	 */
